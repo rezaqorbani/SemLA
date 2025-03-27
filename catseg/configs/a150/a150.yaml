@@ -1,0 +1,13 @@
+_BASE_: ../base.yaml
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 150
+    TRAIN_CLASS_JSON: "datasets/ade150.json"
+    TEST_CLASS_JSON: "datasets/ade150.json"
+DATASETS:
+  TRAIN: ("a150_sem_seg_train",)
+  TEST: ("a150_sem_seg_val",)
+INPUT:
+  MIN_SIZE_TEST: 0
+  MAX_SIZE_TRAIN: 700
+  MAX_SIZE_TEST: 700

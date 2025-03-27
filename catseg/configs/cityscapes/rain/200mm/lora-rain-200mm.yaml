@@ -1,0 +1,4 @@
+_BASE_: ../../cityscapes_base.yaml
+DATASETS:
+  TRAIN: ("rainy_cityscapes_200mm_fine_sem_seg_train",)
+  TEST: ("rainy_cityscapes_200mm_fine_sem_seg_val",)

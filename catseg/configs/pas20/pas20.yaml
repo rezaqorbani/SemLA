@@ -1,0 +1,13 @@
+_BASE_: ../base.yaml
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 20
+    TRAIN_CLASS_JSON: "datasets/voc20.json"
+    TEST_CLASS_JSON: "datasets/voc20.json"
+DATASETS:
+  TRAIN: ("openvocab_pascal20_sem_seg_val",)
+  TEST: ("openvocab_pascal20_sem_seg_val",)
+INPUT:
+  MIN_SIZE_TEST: 468
+  MAX_SIZE_TRAIN: 500
+  MAX_SIZE_TEST: 500

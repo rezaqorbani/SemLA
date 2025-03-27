@@ -1,0 +1,16 @@
+DATASETS: 
+  TRAIN: ("acdc-rain_sem_seg_train",)
+  TEST: ("acdc-rain_sem_seg_train",)
+
+INPUT:
+  MIN_SIZE_TRAIN: (400, 416, 432, 448, 464, 480, 496, 512)
+  MIN_SIZE_TRAIN_SAMPLING: "choice"
+  MIN_SIZE_TEST: 512
+  MAX_SIZE_TRAIN: 1024
+  MAX_SIZE_TEST: 1024
+  SIZE_DIVISIBILITY: 512
+  DATASET_MAPPER_NAME: "mask_former_semantic"
+  CROP:
+    ENABLED: False
+SAVE_NAME: 'acdc_blip.pkl'
+DEVICE: 'cuda'

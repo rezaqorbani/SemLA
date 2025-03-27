@@ -1,0 +1,13 @@
+_BASE_: ../base.yaml
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 59
+    TRAIN_CLASS_JSON: "datasets/pc59.json"
+    TEST_CLASS_JSON: "datasets/pc59.json"
+DATASETS:
+  TRAIN: ("pc59_sem_seg_train",)
+  TEST: ("pc59_sem_seg_val",)
+SOLVER:
+  IMS_PER_BATCH: 4
+  BASE_LR: 0.0001
+  MAX_ITER: 4000

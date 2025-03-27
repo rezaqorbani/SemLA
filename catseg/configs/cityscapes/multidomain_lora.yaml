@@ -1,0 +1,6 @@
+_BASE_: ./cityscapes_base.yaml
+DATASETS:  
+  TRAIN: ("cs-normal_sem_seg_train", "cs-rain-25mm_sem_seg_train", "cs-rain-50mm_sem_seg_train", "cs-rain-75mm_sem_seg_train", "cs-rain-100mm_sem_seg_train", "cs-rain-200mm_sem_seg_train")
+  TEST: ("cs-normal_sem_seg_val", "cs-rain-25mm_sem_seg_val", "cs-rain-50mm_sem_seg_val", "cs-rain-75mm_sem_seg_val", "cs-rain-100mm_sem_seg_val", "cs-rain-200mm_sem_seg_val")
+SOLVER:
+  MAX_ITER: 20000

@@ -1,0 +1,4 @@
+_BASE_: ../../cityscapes_base.yaml
+DATASETS:
+  TRAIN: ("cs-rain-75mm_sem_seg_train",)
+  TEST: ("cs-rain-75mm_sem_seg_val",)

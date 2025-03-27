@@ -1,0 +1,38 @@
+_BASE_: ../vitl_336.yaml
+MODEL:
+  SEM_SEG_HEAD:
+    TRAIN_CLASS_JSON: "datasets/cs19.json"
+    TEST_CLASS_JSON: "datasets/cs19.json"
+    NUM_CLASSES: 19
+DATASETS:
+  TRAIN: ("cs-normal_sem_seg_train",)
+  TEST: ("cs-normal_sem_seg_val", "cs-rain-25mm_sem_seg_val", "cs-rain-50mm_sem_seg_val", "cs-rain-75mm_sem_seg_val", "cs-rain-100mm_sem_seg_val", "cs-rain-200mm_sem_seg_val")
+SOLVER:
+  CHECKPOINT_PERIOD: 100000
+  IMS_PER_BATCH: 4
+  LR_SCHEDULER_NAME: WarmupCosineLR
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 1000
+  WARMUP_METHOD: "linear"
+  WEIGHT_DECAY: 0.00001
+  BASE_LR: 0.0001
+  MAX_ITER: 20000
+  BACKBONE_MULTIPLIER: 0.0
+  CLIP_MULTIPLIER: 1.0
+INPUT:
+  MIN_SIZE_TRAIN: (384, )
+  MIN_SIZE_TRAIN_SAMPLING: "choice"
+  MIN_SIZE_TEST: 512
+  MAX_SIZE_TRAIN: 1024
+  MAX_SIZE_TEST: 1024
+  CROP:
+    ENABLED: True
+    TYPE: "absolute"
+    SIZE: (384, 384)
+  SIZE_DIVISIBILITY: 384
+  DATASET_MAPPER_NAME: "resized_mask_former_semantic"
+TEST:
+  EVAL_PERIOD: 100000
+DATALOADER:
+  NUM_WORKERS: 4
+SEED: 250

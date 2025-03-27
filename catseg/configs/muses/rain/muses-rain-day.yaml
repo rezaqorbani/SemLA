@@ -1,0 +1,4 @@
+_BASE_: ../muses_base.yaml
+DATASETS:
+  TRAIN: ("muses-rain-day_sem_seg_train",)
+  TEST: ("muses-rain-day_sem_seg_val",)

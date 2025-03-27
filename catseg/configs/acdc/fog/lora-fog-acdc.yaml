@@ -1,0 +1,4 @@
+_BASE_: ../acdc_base.yaml
+DATASETS:
+  TRAIN: ("acdc-fog_sem_seg_train",)
+  TEST: ("acdc-fog_sem_seg_val",)

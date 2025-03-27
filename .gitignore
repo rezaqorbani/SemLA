@@ -1,0 +1,7 @@
+__pycache__/
+.venv/
+wandb/
+catseg/loradb/
+catseg/output/
+catseg/models/
+results/

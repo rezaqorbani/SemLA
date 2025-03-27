@@ -1,0 +1,6 @@
+_BASE_: ./acdc_base.yaml
+DATASETS:  
+  TRAIN: ("acdc-rain_sem_seg_train", "acdc-fog_sem_seg_train", "acdc-snow_sem_seg_train", "acdc-night_sem_seg_train",)
+  TEST: ("acdc-rain_sem_seg_val", "acdc-fog_sem_seg_val", "acdc-snow_sem_seg_val", "acdc-night_sem_seg_val",)
+SOLVER:
+  MAX_ITER: 6000

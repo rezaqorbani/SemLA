@@ -1,0 +1,12 @@
+_BASE_: ../base.yaml
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 133
+    TRAIN_CLASS_JSON: "datasets/coconut.json"
+    TEST_CLASS_JSON: "datasets/coconut.json"
+DATASETS:
+  TRAIN: ("coconutL_sem_seg_train",)
+  TEST: ("coconutL_sem_seg_val",)
+SOLVER:
+  MAX_ITER: 86154
+  CHECKPOINT_PERIOD: 40000

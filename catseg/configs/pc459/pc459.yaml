@@ -1,0 +1,10 @@
+_BASE_: ../base.yaml
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 459
+    TRAIN_CLASS_JSON: "datasets/pc459.json"
+    TEST_CLASS_JSON: "datasets/pc459.json"
+    IGNORE_VALUE: 65535
+DATASETS:
+  TRAIN: ("pc459_sem_seg_train",)
+  TEST: ("pc459_sem_seg_val",)

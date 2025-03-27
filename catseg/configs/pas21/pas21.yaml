@@ -1,0 +1,9 @@
+_BASE_: ../vitl_336.yaml
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 21
+    TRAIN_CLASS_JSON: "datasets/voc20b.json"
+    TEST_CLASS_JSON: "datasets/voc20b.json"
+DATASETS:
+  TRAIN: ("openvocab_pascal21_sem_seg_val",)
+  TEST: ("openvocab_pascal21_sem_seg_val",)

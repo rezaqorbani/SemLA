@@ -1,0 +1,4 @@
+distance_measure_name: euclidean
+temperature: 0.05
+top_k: 5
+combination_type: cat

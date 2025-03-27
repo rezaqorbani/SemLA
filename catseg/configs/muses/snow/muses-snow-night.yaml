@@ -1,0 +1,4 @@
+_BASE_: ../muses_base.yaml
+DATASETS:
+  TRAIN: ("muses-snow-night_sem_seg_train",)
+  TEST: ("muses-snow-night_sem_seg_val",)
