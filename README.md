@@ -110,7 +110,7 @@ We used CAT-Seg (L) as our primary backbone. Please follow the instructions [her
 
 ### Adapters
 
-We provide trained LoRAs which can be downloaded from [here](). Please extract the folder containing the LoRAs to `catseg/loradb/`. This folder contains one sub-folder for each adapter such that, once properly set up, the relative path to the LoRA should be:
+We provide trained LoRAs which can be downloaded from [here](https://huggingface.co/rezaqorbani/SemLA/resolve/main/loradb.zip). Please extract the folder containing the LoRAs to `catseg/loradb/`. This folder contains one sub-folder for each adapter such that, once properly set up, the relative path to the LoRA should be:
 
 - catseg/
     - loradb/
@@ -191,6 +191,7 @@ Prior to running experiments, the following YAML configuration files must be pre
 #### 1. Source Domains File
 
 List of source domains (`source_domains.yaml`):
+
 ```yaml
 - domain1
 - domain2
