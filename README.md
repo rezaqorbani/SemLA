@@ -46,8 +46,8 @@
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2403.XXXXX">
-    <img src="https://img.shields.io/badge/arXiv-2403.XXXXX-b31b1b.svg">
+  <a href="https://arxiv.org/abs/2503.21780">
+    <img src="https://img.shields.io/badge/arXiv-2503.21780-b31b1b.svg">
   </a>
   &nbsp;&nbsp;
   <a href="https://thegoodailab.org/blog/semla">
