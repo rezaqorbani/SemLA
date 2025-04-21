@@ -94,31 +94,50 @@ Please follow the instructions in [catseg/datasets/README.md](catseg/datasets/RE
 - [ADE20K](https://ade20k.csail.mit.edu)
 - [India Driving Dataset](https://bair.berkeley.edu/blog/2018/05/30/bdd/)
 - [PASCAL Context 59](https://cs.stanford.edu/~roozbeh/pascal-context/)
-- [NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
 - [COCONut](https://xdeng7.github.io/coconut.github.io/)
 
 > <strong>IMPORTANT</strong>: Please store all datasets in the directory specified by the environment variable `$DETECTRON2_DATASETS`. Please check the `domain_args` function in [domain_orchestrator/utils.py](domain_orchestrator/utils.py) for the expected directory name and structure for each dataset.
+
+### [NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
+We followed the same setup as in [TokenFusion](https://github.com/yikaiw/TokenFusion?tab=readme-ov-file#datasets) for the NYU Depth V2 dataset. The dataset should be downloaded from [here](https://drive.google.com/drive/folders/1mXmOXVsd5l9-gYHk92Wpn6AcKAbE0m3X?usp=sharing) and extracted to the directory `$DETECTRON2_DATASETS/nyudv2/`. Then copy the [`train.txt`](/misc/nyudv2_splits/train.txt) and [`test.txt`](/misc/nyudv2_splits/test.txt) from [`/misc/nyudv2_splits/`](/misc/nyudv2_splits/) to the same directory (`$DETECTRON2_DATASETS/nyudv2/`). The directory structure should look like this:
+
+```bash
+$DETECTRON2_DATASETS/nyudv2/
+├── depth/
+├── mask/
+├── rgb/
+├── train.txt
+└── test.txt
+```
 
 ## Models
 
 ### Backbone
 
-We used CAT-Seg (L) as our primary backbone. Please follow the instructions [here](catseg/README.md) to download the checkpoint. Once downloaded, place the checkpoint in the directory `catseg/models/` and rename the checkpoint to `model_final.pth`. In other words, the relative path to the checkpoint should be 
-- catseg/
+We used CAT-Seg (L) as our primary backbone. Please follow the instructions [here](catseg/README.md) to download the checkpoint. Once downloaded, place the checkpoint in the directory `catseg/models/` and rename the checkpoint to `model_final.pth`. In other words, the relative path to the checkpoint should be:
+<!-- - catseg/
     - models/
-        - model_final.pth
+        - model_final.pth -->
+
+```bash
+catseg/
+├── models/
+│   └── model_final.pth
+```
 
 ### Adapters
 
 We provide trained LoRAs which can be downloaded from [here](https://huggingface.co/rezaqorbani/SemLA/resolve/main/loradb.zip). Please extract the folder containing the LoRAs to `catseg/loradb/`. This folder contains one sub-folder for each adapter such that, once properly set up, the relative path to the LoRA should be:
 
-- catseg/
-    - loradb/
-        - a150/
-        - acdc-fog/
-        - acdc-night/
-        - acdc-rain/
-        - ...
+```bash
+catseg/
+├── loradb/
+│   ├── a150/
+│   ├── acdc-fog/
+│   ├── acdc-night/
+│   ├── acdc-rain/
+│   ├── ...
+```
 
 > <strong>IMPORTANT</strong>: Please do not alter the names of these folders, otherwise the experiments will not work properly.
 
@@ -202,6 +221,7 @@ List of source domains (`source_domains.yaml`):
 #### 2. Target Domains File
 
 List of target domains used for evaluation (`target_domains.yaml`):
+
 ```yaml
 - domain1
 - domain2
@@ -255,13 +275,23 @@ python domain_orchestrator/generate_embeddings.py --source_domains source_domain
 
 This script generates the average embedding for each domain specified in `source_domains.yaml` and saves them in the corresponding adapter folder `catseg/loradb/` directory. The embeddings are used to calculate the similarity between the source and target domains during adaptation. For example for the domain `acdc-rain`, after generating the embeddings, the directory structure for the domain acdc-rain should look like this:
 
-- catseg/
+<!-- - catseg/
     - loradb/
         - acdc-rain/
             - acdc-rain_statistics.npz
             - adapter_config.json
             - adapter_model.safetensors
-        - ...
+        - ... -->
+
+```bash
+catseg/
+├── loradb/
+│   ├── acdc-rain/
+│   │   ├── acdc-rain_statistics.npz
+│   │   ├── adapter_config.json
+│   │   └── adapter_model.safetensors
+│   ├── ...
+```
 
 > <strong>NOTE</strong>: This step can take a while to complete, depending on the number of domains and the size of the dataset.
 ### Command Line Arguments
