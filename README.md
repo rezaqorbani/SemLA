@@ -93,12 +93,12 @@ Please follow the instructions in [catseg/datasets/README.md](catseg/datasets/RE
 - [Mapillary Vistas 1.2](https://www.mapillary.com/dataset/vistas)
 - [ADE20K](https://ade20k.csail.mit.edu)
 - [India Driving Dataset](https://bair.berkeley.edu/blog/2018/05/30/bdd/)
-- [PASCAL Context 59](https://cs.stanford.edu/~roozbeh/pascal-context/)
 - [COCONut](https://xdeng7.github.io/coconut.github.io/)
 
 > <strong>IMPORTANT</strong>: Please store all datasets in the directory specified by the environment variable `$DETECTRON2_DATASETS`. Please check the `domain_args` function in [domain_orchestrator/utils.py](domain_orchestrator/utils.py) for the expected directory name and structure for each dataset.
 
 ### [NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
+
 We followed the same setup as in [TokenFusion](https://github.com/yikaiw/TokenFusion?tab=readme-ov-file#datasets) for the NYU Depth V2 dataset. The dataset should be downloaded from [here](https://drive.google.com/drive/folders/1mXmOXVsd5l9-gYHk92Wpn6AcKAbE0m3X?usp=sharing) and extracted to the directory `$DETECTRON2_DATASETS/nyudv2/`. Then copy the [`train.txt`](/misc/nyudv2_splits/train.txt) and [`test.txt`](/misc/nyudv2_splits/test.txt) from [`/misc/nyudv2_splits/`](/misc/nyudv2_splits/) to the same directory (`$DETECTRON2_DATASETS/nyudv2/`). The directory structure should look like this:
 
 ```bash
@@ -109,6 +109,10 @@ $DETECTRON2_DATASETS/nyudv2/
 ├── train.txt
 └── test.txt
 ```
+
+### [PASCAL Context 59](https://cs.stanford.edu/~roozbeh/pascal-context/)
+
+To setup PASCAL Context 59 dataset, please follow the instruction in [FC-CLIP](https://github.com/bytedance/fc-clip/blob/main/datasets/README.md#pascal-voc-pas-21pas-20) repository instead of the instructions in CAT-Seg [README](catseg/README.md). Once you have donwloaded the dataset and the annotations, and installed [Detail API](https://github.com/zhanghang1989/detail-api), please run the preparation [script](catseg/datasets/prepare_pascal_ctx_sem_seg.py) `prepare_pascal_ctx_sem_seg.py` in the `catseg/datasets/` folder.
 
 ## Models
 
