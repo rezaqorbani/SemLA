@@ -359,7 +359,7 @@ python experiments.py --experiment semla \
 ```
 
 ## License
- See [LICENSE](LICENSE) for details about the license terms for this repository. Portions of the project are under separate license terms. [CAT-Seg](https://github.com/cvlab-kaist/CAT-Seg) is licensed under the MIT License, and the license can be found [here](catseg/LICENSE). In addition, we use some files from [Detectron2](https://github.com/facebookresearch/detectron2) and [FC-Clip](https://github.com/facebookresearch/detectron2) which are under the Apache-2.0 License and [Mask2Fromer](https://github.com/facebookresearch/Mask2Former) which is under the MIT License.
+ See [LICENSE](LICENSE) for details about the license terms for this repository. Portions of the project are under separate license terms. [CAT-Seg](https://github.com/cvlab-kaist/CAT-Seg) is licensed under the MIT License, and the license can be found [here](catseg/LICENSE). In addition, we use some files from [Detectron2](https://github.com/facebookresearch/detectron2) and [FC-Clip](https://github.com/bytedance/fc-clip) which are under the Apache-2.0 License and [Mask2Fromer](https://github.com/facebookresearch/Mask2Former) which is under the MIT License.
 
 ## Acknowledgements
 
