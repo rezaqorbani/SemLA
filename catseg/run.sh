@@ -25,7 +25,7 @@ fi
 shift 3
 opts=${@}
 
-python train_net.py --config $config \
+uv run train_net.py --config $config \
  --num-gpus $gpus \
  --dist-url "auto" \
  --resume \
