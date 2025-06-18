@@ -19,9 +19,17 @@ class ClipEmbeddingModel(EmbeddingModel):
     """Handles image and dataset embedding operations."""
 
     def __init__(self):
+
+        if torch.cuda.is_available():
+            self.device = torch.device("cuda")
+        elif torch.backends.mps.is_available():
+            self.device = torch.device("mps")
+        else:
+            self.device = torch.device("cpu")
+
         self.embedding_model = CLIPModel.from_pretrained(
-            "openai/clip-vit-large-patch14"
-        ).to("cuda")
+            "openai/clip-vit-large-patch14",
+        ).to(self.device)
         self.embedding_processor = CLIPProcessor.from_pretrained(
             "openai/clip-vit-large-patch14"
         )
@@ -41,7 +49,7 @@ class ClipEmbeddingModel(EmbeddingModel):
             print("Error: CLIP model or processor is not initialized.")
             raise
         
-        inputs = self.embedding_processor(images=image, return_tensors="pt").to("cuda")
+        inputs = self.embedding_processor(images=image, return_tensors="pt").to(self.device)
 
         # Generate image embeddings
         with torch.no_grad():

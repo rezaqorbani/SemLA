@@ -169,7 +169,12 @@ class AsyncPredictor:
         for gpuid in range(max(num_gpus, 1)):
             cfg = cfg.clone()
             cfg.defrost()
-            cfg.MODEL.DEVICE = "cuda:{}".format(gpuid) if num_gpus > 0 else "cpu"
+            if num_gpus > 0:
+                cfg.MODEL.DEVICE = "cuda:{}".format(gpuid) if num_gpus > 0
+            elif torch.backends.mps.is_available():
+                cfg.MODEL.DEVICE = "mps"
+            else:
+                cfg.MODEL.DEVICE = "cpu"
             self.procs.append(
                 AsyncPredictor._PredictWorker(cfg, self.task_queue, self.result_queue)
             )
