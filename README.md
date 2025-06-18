@@ -76,11 +76,11 @@ The repository is structured as follows:
 
 ## Installation
 
-1. First, follow the environment setup instructions in the [installation guide](./catseg/INSTALL.md).
-2. Once your environment is set up, install the required packages using the `requirements.txt` file located in the root directory of this repository:
-   ```bash
-   pip install -r requirements.txt
-   ```
+Please install `[uv](https://docs.astral.sh/uv/getting-started/installation/)` and then run:
+
+```bash
+make sync
+```
 
 ## Data preparation
 
