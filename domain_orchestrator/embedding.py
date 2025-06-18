@@ -31,7 +31,7 @@ class ClipEmbeddingModel(EmbeddingModel):
             "openai/clip-vit-large-patch14",
         ).to(self.device)
         self.embedding_processor = CLIPProcessor.from_pretrained(
-            "openai/clip-vit-large-patch14"
+            "openai/clip-vit-large-patch14", use_fast=True,
         )
 
     def embed_image(self, image_path) -> npt.NDArray:
