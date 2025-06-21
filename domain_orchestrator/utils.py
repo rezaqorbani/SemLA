@@ -2,6 +2,7 @@ from argparse import Namespace
 
 import logging
 import os
+from pathlib import Path
 from typing import Literal
 
 import torch
@@ -194,7 +195,7 @@ def get_domain_args(
         resume=True,
     )
 
-    if get_cofing_only:
+    if get_cofing_only or not Path(train_dataset_path).exists():
         return args
     else:
         from catseg.train_net import Trainer, setup
