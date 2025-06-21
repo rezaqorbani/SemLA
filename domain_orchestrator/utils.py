@@ -2,7 +2,10 @@ from argparse import Namespace
 
 import logging
 import os
+from pathlib import Path
 from typing import Literal
+
+import torch
 
 DETECTRON2_DATASET_PATH = os.getenv("DETECTRON2_DATASETS")
 
@@ -192,7 +195,7 @@ def get_domain_args(
         resume=True,
     )
 
-    if get_cofing_only:
+    if get_cofing_only or not Path(train_dataset_path).exists():
         return args
     else:
         from catseg.train_net import Trainer, setup
@@ -256,6 +259,17 @@ def benchmark_catseg(model, args):
         verify_results(cfg, res)
     return res
 
+def get_device() -> str:
+
+    if torch.cuda.is_available():
+        device = "cuda"
+    elif torch.backends.mps.is_available():
+        device = "mps"
+    else:
+        device = "cpu"
+    
+    return device
+
 def load_catseg_model(args, model_path: str = None):
     from catseg.train_net import Trainer, setup
     from detectron2.checkpoint import DetectionCheckpointer
@@ -264,6 +278,9 @@ def load_catseg_model(args, model_path: str = None):
     
     try:
         cfg = setup(args)
+        cfg.defrost()
+        cfg.MODEL.DEVICE = get_device() # Device is cuda by default so we need to overwrite
+        cfg.freeze()
         model = Trainer.build_model(cfg)
         DetectionCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
             cfg.MODEL.WEIGHTS if model_path is None else model_path, resume=args.resume

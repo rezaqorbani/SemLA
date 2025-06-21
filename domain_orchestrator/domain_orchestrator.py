@@ -42,8 +42,8 @@ class Domain:
     args: Namespace
     train_dataset_path: Path
     train_average_embedding: npt.NDArray
-    data_loader: Any
-    evaluator: Any
+    data_loader: Any = None
+    evaluator: Any = None
     lora_path: Path = None
 
 
@@ -216,14 +216,17 @@ class DomainOrchestrator:
         self,
         domain_name: str,
         args: Namespace,
-        evaluator,
-        data_loader,
+        evaluator = None,
+        data_loader = None,
         lora_path: Union[str, Path, None] = None,
     ) -> Domain:
         """Adds a Domain instance to the domains list."""
 
-        train_dataset_path = Path(args.train_dataset_path)
-        assert train_dataset_path.exists(), train_dataset_path
+        if evaluator and data_loader:
+            train_dataset_path = Path(args.train_dataset_path)
+            assert train_dataset_path.exists(), train_dataset_path
+        else:
+            train_dataset_path = None
 
         if lora_path is None:
             lora_path = self.lora_db_path / domain_name

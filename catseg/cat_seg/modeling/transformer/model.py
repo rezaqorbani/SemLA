@@ -704,7 +704,7 @@ class Aggregator(nn.Module):
 
         projected_guidance, projected_text_guidance, projected_decoder_guidance = None, None, [None, None]
         if self.guidance_projection is not None:
-            projected_guidance = self.guidance_projection(appearance_guidance[0])
+            projected_guidance = self.guidance_projection(appearance_guidance[0].contiguous())
         if self.decoder_guidance_projection is not None:
             projected_decoder_guidance = [proj(g) for proj, g in zip(self.decoder_guidance_projection, appearance_guidance[1:])]
 

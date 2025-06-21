@@ -23,7 +23,7 @@ results_folder='./results/semla'
 #     --remove_target_adapter \
 #     --output_dir $results_folder
 
-python experiments.py --experiment semla \
+uv run experiments.py --experiment semla \
     --source_domains $source_domains \
     --target_domains $target_domains \
     --semla_config $semla_config \
