@@ -78,9 +78,10 @@ The repository is structured as follows:
 
 1. First, follow the environment setup instructions in the [installation guide](./catseg/INSTALL.md).
 2. Once your environment is set up, install the required packages using the `requirements.txt` file located in the root directory of this repository:
-   ```bash
-   pip install -r requirements.txt
-   ```
+
+  ```bash
+  pip install -r requirements.txt
+  ```
 
 ## Data preparation
 
@@ -93,7 +94,6 @@ Please follow the instructions in [catseg/datasets/README.md](catseg/datasets/RE
 - [Mapillary Vistas 1.2](https://www.mapillary.com/dataset/vistas)
 - [ADE20K](https://ade20k.csail.mit.edu)
 - [India Driving Dataset](https://bair.berkeley.edu/blog/2018/05/30/bdd/)
-- [COCONut](https://xdeng7.github.io/coconut.github.io/)
 
 > <strong>IMPORTANT</strong>: Please store all datasets in the directory specified by the environment variable `$DETECTRON2_DATASETS`. Please check the `domain_args` function in [domain_orchestrator/utils.py](domain_orchestrator/utils.py) for the expected directory name and structure for each dataset.
 
@@ -113,6 +113,10 @@ $DETECTRON2_DATASETS/nyudv2/
 ### [PASCAL Context 59](https://cs.stanford.edu/~roozbeh/pascal-context/)
 
 To setup PASCAL Context 59 dataset, please follow the instruction in [FC-CLIP](https://github.com/bytedance/fc-clip/blob/main/datasets/README.md#pascal-voc-pas-21pas-20) repository instead of the instructions in CAT-Seg [README](catseg/README.md). Once you have donwloaded the dataset and the annotations, and installed [Detail API](https://github.com/zhanghang1989/detail-api), please run the preparation [script](catseg/datasets/prepare_pascal_ctx_sem_seg.py) `prepare_pascal_ctx_sem_seg.py` in the `catseg/datasets/` folder.
+
+### [COCONut](https://xdeng7.github.io/coconut.github.io/)
+
+In our benchmark, we use [COCONut-Large](https://github.com/bytedance/coconut_cvpr2024/blob/main/preparing_datasets.md#coconut-l) dataset. Please check out this [issue](https://github.com/bytedance/coconut_cvpr2024/issues/32) for some clarification on the exepected size of the dataset. After gathering all the data necessary, segmentation maps can be extracted from the panoptic labels using this [script](https://github.com/bytedance/coconut_cvpr2024/blob/main/tutorials/kmaxdeeplab_semantic/prepare_coco_panoptic_semseg.py). Instructions regarding the extraction procedure can be found in this [README](https://github.com/bytedance/coconut_cvpr2024/blob/main/tutorials/kmaxdeeplab_semantic/README.md).
 
 ## Models
 
@@ -367,7 +371,7 @@ python experiments.py --experiment semla \
 
 ## Acknowledgements
 
-We would like to thank the authors [CAT-Seg](https://github.com/cvlab-kaist/CAT-Seg) whose code has been utilized in this repository.
+We would like to thank the authors [CAT-Seg](https://github.com/cvlab-kaist/CAT-Seg) whose code has been utilized in this project.
 
 ## Citation
 
