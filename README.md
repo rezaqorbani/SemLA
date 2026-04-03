@@ -93,7 +93,7 @@ Please follow the instructions in [catseg/datasets/README.md](catseg/datasets/RE
 - [BDD](http://bair.berkeley.edu/blog/2018/05/30/bdd/)
 - [Mapillary Vistas 1.2](https://www.mapillary.com/dataset/vistas)
 - [ADE20K-150](http://sceneparsing.csail.mit.edu)
-- [India Driving Dataset](https://bair.berkeley.edu/blog/2018/05/30/bdd/)
+- [India Driving Dataset](https://idd.insaan.iiit.ac.in/)
 
 > <strong>IMPORTANT</strong>: Please store all datasets in the directory specified by the environment variable `$DETECTRON2_DATASETS`. Please check the `domain_args` function in [domain_orchestrator/utils.py](domain_orchestrator/utils.py) for the expected directory name and structure for each dataset.
 
